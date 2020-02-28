@@ -2,13 +2,14 @@ require("pry-byebug")
 
 class Room
 
-  attr_reader( :guests, :songs )
+  attr_reader( :guests, :songs, :capacity, :cost )
 
   def initialize( guests = [], songs = [] )
 
     @guests = guests
     @songs = songs
     @capacity = 6
+    @cost = 1000
 
   end
 
@@ -18,7 +19,7 @@ class Room
       @guests.push( guest )
 
     else
-
+      puts("Room is full")
       return "Room is full"
 
     end
