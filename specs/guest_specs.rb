@@ -8,7 +8,7 @@ class GuestTest < Minitest::Test
 
   def setup
 
-    @guest1 = Guest.new( "Bob McJoe", 10000 )
+    @guest1 = Guest.new( "Bob McJoe", 10000, "Row Row Row your boat" )
 
   end
 
@@ -16,6 +16,7 @@ class GuestTest < Minitest::Test
 
     assert_equal( "Bob McJoe", @guest1.name())
     assert_equal( 10000, @guest1.money())
+    assert_equal( "Row Row Row your boat", @guest1.fave_song)
 
   end
 

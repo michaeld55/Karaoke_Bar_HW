@@ -18,8 +18,8 @@ class RoomTest < Minitest::Test
 
     @songs2 = [ @song3 ]
 
-    @guest1 = Guest.new( "Bob McJoe", 10000 )
-    @guest2 = Guest.new( "Joe McBob", 20000 )
+    @guest1 = Guest.new( "Bob McJoe", 10000, "Row Row Row your boat" )
+    @guest2 = Guest.new( "Joe McBob", 20000, "Humpty dumpty" )
     @guests1 = [ @guest1, @guest2 ]
 
     @guest3 = Guest.new( "Tim McTam", 30000 )
@@ -69,9 +69,30 @@ class RoomTest < Minitest::Test
     @room1.add_guest( @guest3 )
     @room1.capacity_check( @guests1 )
     assert_equal( true, @room1.capacity_check( @guests1 ))
-    @room1.add_guest( @guests1 )
+    @room1.add_guest( @guest1 )
     assert_equal( "Room is full", @room1.add_guest( @guests1 ))
     assert_equal( false, @room1.capacity_check( @guests1 ))
+
+  end
+
+  def test_charge()
+
+    @room1.charge( @guest1 )
+    @room1.charge( @guest2 )
+    @room1.add_guest( @guest3 )
+    assert_equal( 3000, @room1.till())
+    assert_equal( 9000, @guest1.money())
+    assert_equal( 19000, @guest2.money())
+    assert_equal( 29000, @guest3.money())
+
+  end
+
+  def test_fave_song_in_room()
+
+    @room1.fave_song_in_room( @guest1 )
+    assert_equal( "WHOO this is my jam", @room1.fave_song_in_room( @guest1 ) )
+    @room1.fave_song_in_room( @guest2 )
+    assert_equal( "Aww they don't have my song", @room1.fave_song_in_room( @guest2 ))
 
   end
 
