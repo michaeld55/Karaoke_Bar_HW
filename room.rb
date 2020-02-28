@@ -17,7 +17,8 @@ class Room
 
   def remove_guest( guest )
 
-    return @guests.delete( guest )
+    @guests.delete( guest )
+    return @guests
 
   end
 
