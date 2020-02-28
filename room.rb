@@ -8,13 +8,20 @@ class Room
 
     @guests = guests
     @songs = songs
+    @capacity = 6
 
   end
 
   def add_guest( guest )
+    if ( capacity_check( @guests) == true )
 
-    @guests.push( guest )
+      @guests.push( guest )
 
+    else
+
+      return "Room is full"
+
+    end
   end
 
   def remove_guest( guest )
@@ -27,5 +34,9 @@ class Room
 
     @songs.push( song )
 
+  end
+
+  def capacity_check( guests )
+    return @capacity > guests.size()
   end
 end
