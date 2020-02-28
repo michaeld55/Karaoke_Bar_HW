@@ -15,4 +15,10 @@ class Room
 
   end
 
+  def remove_guest( guest )
+
+    return @guests.delete( guest )
+
+  end
+
 end

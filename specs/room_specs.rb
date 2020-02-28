@@ -36,4 +36,10 @@ class RoomTest < Minitest::Test
 
   end
 
+  def test_remove_guest()
+
+    result = @room1.remove_guest( @guest2 )
+
+  end
+
 end
